@@ -11,3 +11,33 @@
 например, with open('test_file.txt', encoding='utf-8') as t_f
 невыполнение условия - минус балл
 """
+from chardet import detect
+
+FILE_NAME = 'task_6.txt'
+
+words = [
+    'сетевое программирование',
+    'сокет',
+    'декоратор',
+]
+
+with open(FILE_NAME, 'w') as f:
+    print(*words, file=f, sep='\n')
+    print(f)
+
+
+def encoding_convert(file_name):
+    with open (file_name, 'rb') as f_obj:
+        content_bytes = f_obj.read()
+    detected = detect(content_bytes)
+    encoding = detected['encoding']
+    content_text = content_bytes.decode(encoding)
+    with open(file_name, 'w', encoding='utf-8') as f_obj:
+        f_obj.write(content_text)
+
+
+encoding_convert(FILE_NAME)
+
+with open(FILE_NAME, encoding='utf-8') as f:
+    for line in f:
+        print(line)

@@ -8,3 +8,14 @@
 --- b'class' - используйте маркировку b''
 --- используйте списки и циклы, не дублируйте функции
 """
+
+words = [
+    b'class',
+    b'function',
+    b'method',
+]
+
+for word in words:
+    print(f'Тип переменной - {type(word)}')
+    print(f'Содержимое переменной - {word}')
+    print(f'Длинна переменной - {len(word)}')
