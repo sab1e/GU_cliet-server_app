@@ -15,19 +15,20 @@ from chardet import detect
 
 FILE_NAME = 'task_6.txt'
 
-words = [
+WORDS = [
     'сетевое программирование',
     'сокет',
     'декоратор',
 ]
 
 with open(FILE_NAME, 'w') as f:
-    print(*words, file=f, sep='\n')
+    print(*WORDS, file=f, sep='\n')
     print(f)
 
 
 def encoding_convert(file_name):
-    with open (file_name, 'rb') as f_obj:
+    """Конвертация текстового файла в utf-8"""
+    with open(file_name, 'rb') as f_obj:
         content_bytes = f_obj.read()
     detected = detect(content_bytes)
     encoding = detected['encoding']
